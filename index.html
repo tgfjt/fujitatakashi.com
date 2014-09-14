@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="grid grid-pad">
-		<div class="col-1-1">
+		<div class="col-5-12">
 			<div class="content">
 				<section class="intro">
 					<header>
@@ -25,14 +25,40 @@
 							<li><a href="https://twitter.com/tgfjt">Twitter</a></li>
 							<li><a href="https://www.npmjs.org/~tgfjt">npm</a></li>
 						</ul>
-						<section class="coderwall" data-coderwall-username="tgfjt" data-coderwall-orientation="horizontal"></section>
 					</div>
-					</section>
+				</section>
+			</div>
+		</div>
+		<div class="col-7-12">
+			<div class="content">
+				<div class="pie">
+					<h2>Graph: Language Usage / GitHub</h2>
+					<div class="col-1-2">
+						<div class="content">
+							<div id="graph"></div>
+						</div>
+					</div>
+					<div class="col-1-2">
+						<div class="content">
+							<ul id="graphlist">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="grid grid-pad">
+		<div class="col-1-1">
+			<div class="content">
+				<section class="coderwall" data-coderwall-username="tgfjt" data-coderwall-orientation="horizontal"></section>
 			</div>
 		</div>
 	</div>
 	<footer id="scriptbox"></footer>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script src="js/bundle.js"></script>
 	<script src="http://coderwall.com/javascripts/jquery.coderwall.js" async></script>
 </body>

@@ -51,3 +51,34 @@ code {
 	margin-left: 1em;
 	font-size: 50%;
 }
+
+.pie {
+	margin-top: 2em;
+}
+
+.pie h2 {
+	font-size: 125%;
+}
+
+.pie ul {
+	padding: 0;
+}
+
+.pie li {
+	list-style-type: none;
+}
+
+.pie .dot {
+	width: .8em;
+	height: .8em;
+	display: inline-block;
+	border-radius: 50%;
+	margin-right: .5em;
+	vertical-align: middle;
+	transition: all .1s ease-in-out;
+}
+
+.pie li:hover .dot {
+	width: 1em;
+	height: 1em;
+}
