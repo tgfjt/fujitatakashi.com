@@ -52,6 +52,10 @@ code {
 	font-size: 50%;
 }
 
+.intro small:last-child {
+	margin-left: .5em;
+}
+
 .pie {
 	margin-top: 2em;
 }

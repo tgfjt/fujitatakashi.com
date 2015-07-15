@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html itemscope itemtype="http://schema.org/WebSite">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width">
 	<meta name="author" content="tgfjt">
 
-	<title>tgfjt / Takashi Fujita</title>
+	<title itemprop="name">tgfjt / Takashi Fujita</title>
+
+	<meta itemprop="keywords" content="Takashi Fujita, tgfjt" lang="">
+	<meta content="The Web Develover loves science! JavaScript, Front-end, Browser, Languages and etc." itemprop="description">
 
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
@@ -29,30 +31,58 @@
 	<meta name="msapplication-wide310x150logo" content="img/favicon/mstile-310x150.png" />
 	<meta name="msapplication-square310x310logo" content="img/favicon/mstile-310x310.png" />
 
-	<link rel="stylesheet" href="css/grid.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/grid.css" />
+	<link rel="stylesheet" href="css/style.css" />
 
-	<link href="http://coderwall.com/stylesheets/jquery.coderwall.css" media="all" rel="stylesheet" type="text/css"></link>
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@tgfjt">
+	<meta name="twitter:creator" content="@tgfjt">
+
+	<link href="//coderwall.com" rel="preconnect dns-prefetch">
+	<link href="//github.com" rel="preconnect dns-prefetch">
+	<link href="//twitter.com" rel="preconnect dns-prefetch">
+	<link href="//www.npmjs.com" rel="preconnect dns-prefetch">
+	<link href="//pinboard.in" rel="preconnect dns-prefetch">
+
+	<link href="https://coderwall.com/stylesheets/jquery.coderwall.css" media="all" rel="stylesheet" type="text/css"></link>
 
 	<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js></script><![endif]-->
 </head>
 <body>
+	<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": [
+		{
+			"@type": "ListItem",
+			"position": 1,
+			"item": {
+				"@id": "http://tgfjt.github.io/",
+				"name": "tgfjt"
+			}
+		}
+	]
+}
+	</script>
 	<div class="grid grid-pad">
 		<div class="col-5-12">
 			<div class="content">
-				<section class="intro">
+				<section class="intro" itemprop="author" itemscope itemtype="http://schema.org/Person">
 					<header>
-						<h1>tgfjt<small>Takashi Fujita</small></h1>
-						<img src="img/tgfjt.png" alt="">
+						<h1><span itemprop="alternateName">tgfjt</span><small>Takashi Fujita</small></h1>
+						<meta content="Takashi" itemprop="givenName">
+						<meta content="Fujita" itemprop="familyName">
+						<img src="/img/tgfjt.png" alt="" itemprop="image">
 					</header>
-					<div>
+					<nav>
 						<ul>
-							<li><a href="https://github.com/tgfjt">GitHub</a></li>
-							<li><a href="https://www.npmjs.org/~tgfjt">npm</a></li>
-							<li><a href="https://twitter.com/tgfjt">Twitter</a></li>
-							<li><a href="https://pinboard.in/u:tgfjt">pinboard</a></li>
+							<li><a href="https://github.com/tgfjt" itemprop="url">GitHub</a></li>
+							<li><a href="https://www.npmjs.org/~tgfjt" itemprop="url">npm</a></li>
+							<li><a href="https://twitter.com/tgfjt" itemprop="url">Twitter</a></li>
+							<li><a href="https://pinboard.in/u:tgfjt" itemprop="url">pinboard</a></li>
 						</ul>
-					</div>
+					</nav>
 				</section>
 			</div>
 		</div>
@@ -75,18 +105,19 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="grid grid-pad">
 		<div class="col-1-1">
 			<div class="content">
-				<section class="coderwall" data-coderwall-username="tgfjt" data-coderwall-orientation="horizontal"></section>
+				<aside class="coderwall" data-coderwall-username="tgfjt" data-coderwall-orientation="horizontal"></aside>
 			</div>
 		</div>
 	</div>
 	<footer id="scriptbox"></footer>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 	<script src="js/bundle.js"></script>
-	<script src="http://coderwall.com/javascripts/jquery.coderwall.js" async></script>
+	<script src="https://coderwall.com/javascripts/jquery.coderwall.js" async></script>
 </body>
 </html>
