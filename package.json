@@ -1,0 +1,21 @@
+{
+  "name": "@tgfjt/fujitatakashi.com",
+  "version": "1.0.0",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tgfjt/fujitatakashi.com.git"
+  },
+  "author": "tgfjt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tgfjt/fujitatakashi.com/issues"
+  },
+  "homepage": "https://github.com/tgfjt/fujitatakashi.com#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-gh-pages": "^0.5.4"
+  }
+}
