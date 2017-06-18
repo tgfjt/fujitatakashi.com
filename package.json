@@ -2,7 +2,13 @@
   "name": "@tgfjt/fujitatakashi.com",
   "version": "1.0.0",
   "scripts": {
-    "deploy": "gh-pages -d public"
+    "start": "budo src/client.js:js/bundle.js --open --live --ndjson --dir public -- -t [ sheetify -u sheetify-cssnext ] | pino-colada",
+    "build:js": "browserify -e src/client.js -t [ sheetify -u sheetify-cssnext ] -g envify -g uglifyify | uglifyjs > public/js/bundle.js",
+    "build:html": "node src/render.js > public/index.html",
+    "build": "npm run build:js && npm run build:html",
+    "precommit": "lint-staged",
+    "lint": "standard",
+    "deploy": "npm run build && gh-pages -d public"
   },
   "repository": {
     "type": "git",
@@ -15,6 +21,32 @@
   },
   "homepage": "https://github.com/tgfjt/fujitatakashi.com#readme",
   "devDependencies": {
-    "gh-pages": "^1.0.0"
+    "browserify": "^14.4.0",
+    "budo": "^10.0.3",
+    "envify": "^4.0.0",
+    "gh-pages": "^1.0.0",
+    "husky": "^0.13.4",
+    "lint-staged": "^4.0.0",
+    "pino-colada": "^1.4.0",
+    "sheetify": "^6.1.0",
+    "sheetify-cssnext": "^1.0.7",
+    "standard": "^10.0.2",
+    "trumpet": "^1.7.2",
+    "uglifyify": "^4.0.1",
+    "yo-yoify": "^3.7.3"
+  },
+  "dependencies": {
+    "browser-server": "^1.0.3",
+    "choo": "^5.6.2",
+    "choo-expose": "^1.0.1",
+    "choo-log": "^6.1.2",
+    "extend": "^3.0.1"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "npm run lint",
+      "standard --fix",
+      "git add"
+    ]
   }
 }
