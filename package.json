@@ -2,7 +2,7 @@
   "name": "@tgfjt/fujitatakashi.com",
   "version": "1.0.0",
   "scripts": {
-    "gulp": "gulp"
+    "deploy": "gh-pages -d public"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
   },
   "homepage": "https://github.com/tgfjt/fujitatakashi.com#readme",
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-gh-pages": "^0.5.4"
+    "gh-pages": "^1.0.0"
   }
 }
