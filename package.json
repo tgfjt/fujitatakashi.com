@@ -7,8 +7,7 @@
     "build:html": "node src/render.js > public/index.html",
     "build": "npm run build:js && npm run build:html",
     "precommit": "lint-staged",
-    "lint": "standard",
-    "deploy": "NODE_ENV=production npm run build && gh-pages -d public"
+    "lint": "standard"
   },
   "repository": {
     "type": "git",
@@ -35,7 +34,6 @@
   },
   "devDependencies": {
     "budo": "^10.0.3",
-    "gh-pages": "^1.0.0",
     "husky": "^0.13.4",
     "lint-staged": "^4.0.0",
     "pino-colada": "^1.4.0",
