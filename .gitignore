@@ -1,4 +1,4 @@
 node_modules
-
-public/js/bundle.js
-public/index.html
+dist
+.astro
+styled-system

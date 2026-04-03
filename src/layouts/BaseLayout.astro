@@ -1,0 +1,81 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title,
+  description = 'Takashi Fujita',
+  ogType = 'website',
+} = Astro.props;
+
+const siteTitle = 'fujitatakashi.com';
+const fullTitle = title === siteTitle ? title : `${title} — ${siteTitle}`;
+const canonical = Astro.url.href;
+
+import '../styles/global.css';
+---
+
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content={siteTitle} />
+
+  <link rel="alternate" type="application/rss+xml" title={siteTitle} href="/rss.xml" />
+  <link rel="alternate" type="text/x-opml" title="購読リスト" href="/opml.xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  <slot name="head" />
+</head>
+<body>
+  <header data-pagefind-ignore>
+    <nav>
+      <a href="/">{siteTitle}</a>
+      <a href="/detour/">Detour</a>
+      <a href="/blogroll/">ブログロール</a>
+      <a href="/about/">About</a>
+    </nav>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer data-pagefind-ignore>
+    <p>
+      <a href="/rss.xml">RSS</a> ·
+      <a href="/opml.xml">OPML</a>
+    </p>
+  </footer>
+</body>
+</html>
+
+<style>
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  nav a:first-child {
+    font-weight: bold;
+    margin-right: auto;
+  }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--colors-border, #1a1a1a33);
+  }
+</style>

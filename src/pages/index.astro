@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { toSlug } from '../lib/slug';
+
+const entries = await getCollection('detour');
+const recent = entries
+  .filter((e) => !e.data.defunct)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 5);
+---
+
+<BaseLayout title="fujitatakashi.com">
+  <h1>fujitatakashi.com</h1>
+  <p>Takashi Fujita の個人サイト。</p>
+
+  <section>
+    <h2>最近の寄り道</h2>
+    <ul>
+      {recent.map((entry) => (
+        <li>
+          <a href={`/detour/${toSlug(entry.id)}/`}>{entry.data.title}</a>
+          <span class="date">{entry.data.date.toLocaleDateString('ja-JP')}</span>
+        </li>
+      ))}
+    </ul>
+    <p><a href="/detour/">すべて見る</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  section {
+    margin-top: 3rem;
+  }
+
+  section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .date {
+    font-size: 0.875rem;
+    opacity: 0.7;
+    white-space: nowrap;
+  }
+</style>

@@ -1,0 +1,12 @@
+<div id="search"></div>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script>
+  import('/pagefind/pagefind-ui.js').then(({ PagefindUI }) => {
+    new PagefindUI({
+      element: '#search',
+      showSubResults: false,
+      showImages: false,
+    });
+  });
+</script>
