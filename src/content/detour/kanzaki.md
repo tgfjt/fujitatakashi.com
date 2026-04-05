@@ -2,7 +2,7 @@
 title: "kanzaki"
 description: "コントラバスにセマンティック・ウェブ。HTML関連などで何度見に行ったことか。"
 date: 2026-04-01
-tags: ["技術", "日記", "長期運営"]
+tags: ["Webの発見", "技術", "日記", "長期運営"]
 url: "https://www.kanzaki.com/"
 feedUrl: "https://www.kanzaki.com/info/rss.rdf"
 ---

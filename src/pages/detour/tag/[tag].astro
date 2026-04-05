@@ -1,28 +1,30 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { toSlug } from '../../lib/slug';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { toSlug } from '../../../lib/slug';
 
+export async function getStaticPaths() {
+  const entries = await getCollection('detour');
+  const tags = [...new Set(entries.flatMap((e) => e.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
 const entries = await getCollection('detour');
-const sorted = entries.sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-);
-
-const allTags = [...new Set(sorted.flatMap((e) => e.data.tags))].sort();
+const filtered = entries
+  .filter((e) => e.data.tags.includes(tag))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<BaseLayout title="Detour" description="寄り道の記録">
-  <h1>Detour</h1>
-  <p>寄り道の記録。{sorted.length}件。</p>
-
-  {allTags.length > 0 && (
-    <ul class="tags">
-      {allTags.map((tag) => <li><a href={`/detour/tag/${tag}/`}>{tag}</a></li>)}
-    </ul>
-  )}
+<BaseLayout title={`#${tag}`} description={`「${tag}」タグの記事一覧`}>
+  <h1>#{tag}</h1>
+  <p>{filtered.length}件</p>
 
   <ul class="entries">
-    {sorted.map((entry) => (
+    {filtered.map((entry) => (
       <li>
         <a href={`/detour/${toSlug(entry.id)}/`}>{entry.data.title}</a>
         {entry.data.url && <span class="external">↗</span>}
@@ -31,28 +33,14 @@ const allTags = [...new Set(sorted.flatMap((e) => e.data.tags))].sort();
       </li>
     ))}
   </ul>
+
+  <p><a href="/detour/">← Detour に戻る</a></p>
 </BaseLayout>
 
 <style>
   h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
-  }
-
-  .tags li {
-    font-size: 0.875rem;
-    background: var(--colors-tag-bg, #1a1a1a14);
-    padding: 0.125rem 0.5rem;
-    border-radius: 2px;
   }
 
   .entries {

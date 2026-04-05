@@ -2,7 +2,7 @@
 title: "hail2u"
 description: "Web標準・CSS・フロントエンド技術などなどについて長年書き続けている。購読リスト（OPML）を公開しているところも素敵。"
 date: 2026-04-01
-tags: ["web標準", "css", "フロントエンド", "リンクハブ"]
+tags: ["Webの発見", "web標準", "css", "フロントエンド", "リンクハブ"]
 url: "https://hail2u.net/"
 feedUrl: "https://hail2u.net/feed"
 ---

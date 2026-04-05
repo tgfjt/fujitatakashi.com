@@ -11,6 +11,7 @@ const detour = defineCollection({
     url: z.string().url().optional(),
     feedUrl: z.string().url().optional(),
     defunct: z.boolean().default(false),
+    syndication: z.array(z.string().url()).default([]),
   }),
 });
 
