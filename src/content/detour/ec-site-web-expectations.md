@@ -2,7 +2,7 @@
 title: "EC サイトを見ていて思う Web への期待値"
 description: "Webの持ち味を発揮しやすいのがECサイトなのに、全然求めてないものばっかり目の前に出される感じ"
 date: 2023-11-16
-tags: ["雑文", "web"]
+tags: ["雑文"]
 syndication: ["https://sizu.me/tgfjt/posts/v97o5xo143mb"]
 ---
 

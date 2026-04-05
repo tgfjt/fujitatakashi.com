@@ -2,7 +2,7 @@
 title: "Webmention のことを初めて知った"
 description: "Trackbackの思想が実装を一度壊されて20年かけて別の実装で蘇ってる"
 date: 2026-03-19
-tags: ["雑文", "web", "IndieWeb"]
+tags: ["雑文", "IndieWeb"]
 syndication: ["https://sizu.me/tgfjt/posts/8uv74ob4v33n"]
 ---
 

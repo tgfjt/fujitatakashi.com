@@ -27,7 +27,7 @@ const { Content } = await entry.render();
       </p>
     )}
 
-    <p>{entry.data.description}</p>
+    {entry.data.description && <p>{entry.data.description}</p>}
 
     <div class="meta">
       <time datetime={entry.data.date.toISOString()}>
