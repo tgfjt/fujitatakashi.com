@@ -1,38 +1,38 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const entries = await getCollection('writing');
 const withUrl = entries.filter((e) => e.data.url);
 const active = withUrl
   .filter((e) => !e.data.defunct)
-  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'ja'));
+  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'en'));
 const defunct = withUrl
   .filter((e) => e.data.defunct)
-  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'ja'));
+  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'en'));
 ---
 
-<BaseLayout title="ブログロール" description="登録サイトのリンク一覧" altLangHref="/en/blogroll/">
-  <h1>ブログロール</h1>
+<BaseLayout title="Blogroll" description="Sites I've bookmarked" lang="en" altLangHref="/blogroll/">
+  <h1>Blogroll</h1>
 
   <ul>
     {active.map((entry) => (
       <li>
         <a href={entry.data.url} rel="noopener noreferrer" target="_blank">{entry.data.title}</a>
         {entry.data.feedUrl && <span class="feed">(feed)</span>}
-        — {entry.data.description}
+        — {entry.data.descriptionEn ?? entry.data.description}
       </li>
     ))}
   </ul>
 
   {defunct.length > 0 && (
     <>
-      <h2>更新停止・閉鎖</h2>
+      <h2>Defunct / no longer updated</h2>
       <ul>
         {defunct.map((entry) => (
           <li>
             <a href={entry.data.url} rel="noopener noreferrer" target="_blank">{entry.data.title}</a>
-            — {entry.data.description}
+            — {entry.data.descriptionEn ?? entry.data.description}
           </li>
         ))}
       </ul>
