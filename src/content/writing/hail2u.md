@@ -1,6 +1,7 @@
 ---
 title: "hail2u"
 description: "Web標準・CSS・フロントエンド技術などなどについて長年書き続けている。購読リスト（OPML）を公開しているところも素敵。"
+descriptionEn: "Has been writing about web standards, CSS, and front-end for years. It's great that they publish their subscription list (OPML) too."
 date: 2026-04-01
 tags: ["Webの発見", "web標準", "css", "フロントエンド", "リンクハブ"]
 url: "https://hail2u.net/"

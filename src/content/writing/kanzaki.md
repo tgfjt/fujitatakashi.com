@@ -1,6 +1,7 @@
 ---
 title: "kanzaki"
 description: "コントラバスにセマンティック・ウェブ。HTML関連などで何度見に行ったことか。"
+descriptionEn: "Double bass and semantic web. I've visited this site countless times for HTML-related stuff."
 date: 2026-04-01
 tags: ["Webの発見", "技術", "日記", "長期運営"]
 url: "https://www.kanzaki.com/"

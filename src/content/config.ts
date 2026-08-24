@@ -5,6 +5,7 @@ const writing = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
+    descriptionEn: z.string().optional(),
     date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
     lang: z.enum(['ja', 'en']).default('ja'),
