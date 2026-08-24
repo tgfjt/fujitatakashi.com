@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { toSlug } from '../../lib/slug';
 
-const entries = await getCollection('detour');
+const entries = await getCollection('writing');
 const sorted = entries.sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
@@ -17,14 +17,14 @@ const allTags = [...new Set(sorted.flatMap((e) => e.data.tags))].sort();
 
   {allTags.length > 0 && (
     <ul class="tags">
-      {allTags.map((tag) => <li><a href={`/detour/tag/${tag}/`}>{tag}</a></li>)}
+      {allTags.map((tag) => <li><a href={`/writing/tag/${tag}/`}>{tag}</a></li>)}
     </ul>
   )}
 
   <ul class="entries">
     {sorted.map((entry) => (
       <li>
-        <a href={`/detour/${toSlug(entry.id)}/`}>{entry.data.title}</a>
+        <a href={`/writing/${toSlug(entry.id)}/`}>{entry.data.title}</a>
         {entry.data.url && <span class="external">↗</span>}
         {entry.data.defunct && <span class="defunct">（閉鎖）</span>}
         <span class="date">{entry.data.date.toLocaleDateString('ja-JP')}</span>

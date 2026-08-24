@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { toSlug } from '../../lib/slug';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('detour');
+  const entries = await getCollection('writing');
   return entries.map((entry) => ({
     params: { slug: toSlug(entry.id) },
     props: { entry },
@@ -15,7 +15,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description} ogType="article">
+<BaseLayout title={entry.data.title} description={entry.data.description} ogType="article" lang={entry.data.lang}>
   <article data-pagefind-body>
     <h1 data-pagefind-meta="title">{entry.data.title}</h1>
 
@@ -31,11 +31,11 @@ const { Content } = await entry.render();
 
     <div class="meta">
       <time datetime={entry.data.date.toISOString()}>
-        {entry.data.date.toLocaleDateString('ja-JP')}
+        {entry.data.date.toLocaleDateString(entry.data.lang === 'en' ? 'en-US' : 'ja-JP')}
       </time>
       {entry.data.tags.length > 0 && (
         <ul class="tags">
-          {entry.data.tags.map((tag) => <li><a href={`/detour/tag/${tag}/`}>{tag}</a></li>)}
+          {entry.data.tags.map((tag) => <li><a href={`/writing/tag/${tag}/`}>{tag}</a></li>)}
         </ul>
       )}
     </div>

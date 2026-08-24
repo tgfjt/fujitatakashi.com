@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import { toSlug } from '../lib/slug';
 
 export async function GET(context: APIContext) {
-  const entries = await getCollection('detour');
+  const entries = await getCollection('writing');
   const sorted = entries.sort(
     (a, b) => b.data.date.getTime() - a.data.date.getTime(),
   );
@@ -16,7 +16,7 @@ export async function GET(context: APIContext) {
     items: sorted.map((entry) => ({
       title: entry.data.title,
       description: entry.data.description,
-      link: `/detour/${toSlug(entry.id)}/`,
+      link: `/writing/${toSlug(entry.id)}/`,
       pubDate: entry.data.date,
     })),
   });

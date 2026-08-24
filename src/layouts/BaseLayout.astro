@@ -3,12 +3,16 @@ interface Props {
   title: string;
   description?: string;
   ogType?: 'website' | 'article';
+  lang?: 'ja' | 'en';
+  altLangHref?: string;
 }
 
 const {
   title,
   description = 'Takashi Fujita',
   ogType = 'website',
+  lang = 'ja',
+  altLangHref,
 } = Astro.props;
 
 const siteTitle = 'fujitatakashi.com';
@@ -18,7 +22,7 @@ const canonical = Astro.url.href;
 import '../styles/global.css';
 ---
 
-<html lang="ja">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,23 +35,41 @@ import '../styles/global.css';
   <meta property="og:description" content={description} />
   <meta property="og:type" content={ogType} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'ja_JP'} />
   <meta property="og:site_name" content={siteTitle} />
 
   <link rel="alternate" type="application/rss+xml" title={siteTitle} href="/rss.xml" />
   <link rel="alternate" type="text/x-opml" title="購読リスト" href="/opml.xml" />
   <link rel="sitemap" href="/sitemap-index.xml" />
 
+  {altLangHref && (
+    <link rel="alternate" hreflang={lang === 'en' ? 'ja' : 'en'} href={new URL(altLangHref, Astro.url).href} />
+  )}
+  <link rel="alternate" hreflang={lang} href={canonical} />
+
   <slot name="head" />
 </head>
 <body>
   <header data-pagefind-ignore>
     <nav>
-      <a href="/">{siteTitle}</a>
-      <a href="/detour/">Writing</a>
+      {lang === 'en' ? (
+        <a href="/en/">{siteTitle}</a>
+      ) : (
+        <a href="/">{siteTitle}</a>
+      )}
+      <a href="/writing/">Writing</a>
       <a href="/blogroll/">Blogroll</a>
-      <a href="/now/">Now</a>
-      <a href="/about/">About</a>
+      {lang === 'en' ? (
+        <a href="/en/now/">Now</a>
+      ) : (
+        <a href="/now/">Now</a>
+      )}
+      {lang === 'en' ? (
+        <a href="/en/about/">About</a>
+      ) : (
+        <a href="/about/">About</a>
+      )}
+      {altLangHref && <a href={altLangHref}>{lang === 'en' ? '日本語' : 'EN'}</a>}
     </nav>
   </header>
   <main>

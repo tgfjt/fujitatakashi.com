@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { toSlug } from '../lib/slug';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { toSlug } from '../../lib/slug';
 
 const entries = await getCollection('writing');
 const recent = entries
@@ -10,21 +10,25 @@ const recent = entries
   .slice(0, 5);
 ---
 
-<BaseLayout title="fujitatakashi.com" altLangHref="/en/">
+<BaseLayout title="fujitatakashi.com" lang="en" altLangHref="/">
   <h1>fujitatakashi.com</h1>
-  <p>Takashi Fujita の個人サイト。</p>
+  <p>Takashi Fujita's personal site.</p>
+
+  <p>
+    Most of the writing here is in Japanese. English posts go to <a href="https://substack.com/@fujitatakashi" rel="noopener noreferrer" target="_blank">my Substack</a> instead.
+  </p>
 
   <section>
-    <h2>最近の寄り道</h2>
+    <h2>Recent writing (Japanese)</h2>
     <ul>
       {recent.map((entry) => (
         <li>
           <a href={`/writing/${toSlug(entry.id)}/`}>{entry.data.title}</a>
-          <span class="date">{entry.data.date.toLocaleDateString('ja-JP')}</span>
+          <span class="date">{entry.data.date.toLocaleDateString('en-US')}</span>
         </li>
       ))}
     </ul>
-    <p><a href="/writing/">すべて見る</a></p>
+    <p><a href="/writing/">See all</a></p>
   </section>
 </BaseLayout>
 

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const updatedAt = '2026-08-24';
+---
+
+<BaseLayout title="Now" description="Takashi Fujita — what I'm doing now" lang="en" altLangHref="/now/">
+  <h1>Now</h1>
+  <p class="updated">Last updated: {updatedAt}</p>
+
+  <p>Trying out <a href="https://delta.dev/" rel="noopener noreferrer" target="_blank">Delta.dev</a>. gpui is good too. Thinking about building something with it.</p>
+
+  <p>
+    Rebuilding fujitatakashi.com as a place to keep writing. I'll keep writing even if no one reads it. <a href="/en/about">about</a> has who I am, <a href="/writing">writing</a> has the day-to-day (in Japanese).
+  </p>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .updated {
+    opacity: 0.6;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+  }
+</style>

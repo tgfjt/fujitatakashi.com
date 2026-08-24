@@ -4,14 +4,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const updatedAt = '2026-08-24';
 ---
 
-<BaseLayout title="Now" description="Takashi Fujita — 今やってること">
+<BaseLayout title="Now" description="Takashi Fujita — 今やってること" altLangHref="/en/now/">
   <h1>Now</h1>
   <p class="updated">Last updated: {updatedAt}</p>
 
-  <p>Delta.dev を使ってみてる。gpui もいい。何か作ってみようと思う。</p>
+  <p><a href="https://delta.dev/" rel="noopener noreferrer" target="_blank">Delta.dev</a> を使ってみてる。gpui もいい。何か作ってみようと思う。</p>
 
   <p>
-    fujitatakashi.com は書き続けるための場所として作り直し中。誰かに読まれなくても書き続けるつもり。<a href="/about">about</a> に自己紹介、<a href="/detour">writing</a> に日々のこと。
+    fujitatakashi.com は書き続けるための場所として作り直し中。誰かに読まれなくても書き続けるつもり。<a href="/about">about</a> に自己紹介、<a href="/writing">writing</a> に日々のこと。
   </p>
 </BaseLayout>
 

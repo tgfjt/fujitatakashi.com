@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import { buildOpml } from '../lib/opml';
 
 export const GET: APIRoute = async () => {
-  const entries = await getCollection('detour');
+  const entries = await getCollection('writing');
   const withFeed = entries.filter((e) => e.data.feedUrl && !e.data.defunct);
 
   const opml = buildOpml(
