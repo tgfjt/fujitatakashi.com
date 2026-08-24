@@ -11,8 +11,8 @@ const sorted = entries.sort(
 const allTags = [...new Set(sorted.flatMap((e) => e.data.tags))].sort();
 ---
 
-<BaseLayout title="Detour" description="寄り道の記録">
-  <h1>Detour</h1>
+<BaseLayout title="Writing" description="寄り道の記録">
+  <h1>Writing</h1>
   <p>寄り道の記録。{sorted.length}件。</p>
 
   {allTags.length > 0 && (
