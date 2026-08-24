@@ -11,13 +11,14 @@
     "prepare": "panda codegen"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.0",
-    "@astrojs/sitemap": "^3.0.0",
-    "astro": "^5.0.0"
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.4"
   },
   "devDependencies": {
     "@pandacss/dev": "^0.52.0",
     "pagefind": "^1.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "wrangler": "^4.125.0"
   }
 }
