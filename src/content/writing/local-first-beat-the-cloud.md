@@ -6,9 +6,13 @@ tags: [local-first, Webの発見]
 
 [Local-first software](https://www.inkandswitch.com/essay/local-first/)
 
-> To sum up: the cloud gives us collaboration, but old-fashioned apps give us ownership. Can't we have the best of both worlds?
->
-> We would like both the convenient cross-device access and real-time collaboration provided by cloud apps, and also the personal ownership of your own data embodied by "old-fashioned" software.
+<blockquote cite="https://www.inkandswitch.com/essay/local-first/">
+
+To sum up: the cloud gives us collaboration, but old-fashioned apps give us ownership. Can't we have the best of both worlds?
+
+We would like both the convenient cross-device access and real-time collaboration provided by cloud apps, and also the personal ownership of your own data embodied by "old-fashioned" software.
+
+</blockquote>
 
 - イデオロギー（正しさ）だけではユーザーは動かない
 - クラウドより優れていなければ勝てない
