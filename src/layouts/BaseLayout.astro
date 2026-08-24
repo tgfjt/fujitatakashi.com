@@ -1,0 +1,126 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogType?: 'website' | 'article';
+  lang?: 'ja' | 'en';
+  altLangHref?: string;
+}
+
+const {
+  title,
+  description = 'Takashi Fujita',
+  ogType = 'website',
+  lang = 'ja',
+  altLangHref,
+} = Astro.props;
+
+const siteTitle = 'fujitatakashi.com';
+const fullTitle = title === siteTitle ? title : `${title} — ${siteTitle}`;
+const canonical = Astro.url.href;
+
+import '../styles/global.css';
+---
+
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'ja_JP'} />
+  <meta property="og:site_name" content={siteTitle} />
+
+  <link rel="alternate" type="application/rss+xml" title={siteTitle} href="/rss.xml" />
+  <link rel="alternate" type="text/x-opml" title="購読リスト" href="/opml.xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  {altLangHref && (
+    <link rel="alternate" hreflang={lang === 'en' ? 'ja' : 'en'} href={new URL(altLangHref, Astro.url).href} />
+  )}
+  <link rel="alternate" hreflang={lang} href={canonical} />
+
+  <slot name="head" />
+</head>
+<body>
+  <header data-pagefind-ignore>
+    <nav>
+      {lang === 'en' ? (
+        <a href="/en/">{siteTitle}</a>
+      ) : (
+        <a href="/">{siteTitle}</a>
+      )}
+      <a href="/writing/">Writing</a>
+      {lang === 'en' ? (
+        <a href="/en/blogroll/">Blogroll</a>
+      ) : (
+        <a href="/blogroll/">Blogroll</a>
+      )}
+      {lang === 'en' ? (
+        <a href="/en/now/">Now</a>
+      ) : (
+        <a href="/now/">Now</a>
+      )}
+      {lang === 'en' ? (
+        <a href="/en/about/">About</a>
+      ) : (
+        <a href="/about/">About</a>
+      )}
+      {altLangHref && <a href={altLangHref}>{lang === 'en' ? '日本語' : 'EN'}</a>}
+    </nav>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer data-pagefind-ignore>
+    <a href="/rss.xml">RSS</a>
+    <a href="/opml.xml">OPML</a>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+  }
+</style>
+
+<style>
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  nav a:first-child {
+    font-weight: bold;
+    margin-right: auto;
+  }
+
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-top: 1px solid var(--colors-border, #1a1a1a33);
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { toSlug } from '../../../lib/slug';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('writing');
+  const tags = [...new Set(entries.flatMap((e) => e.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
+const entries = await getCollection('writing');
+const filtered = entries
+  .filter((e) => e.data.tags.includes(tag))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title={`#${tag}`} description={`「${tag}」タグの記事一覧`}>
+  <h1>#{tag}</h1>
+  <p>{filtered.length}件</p>
+
+  <ul class="entries">
+    {filtered.map((entry) => (
+      <li>
+        <a href={`/writing/${toSlug(entry.id)}/`}>{entry.data.title}</a>
+        {entry.data.url && <span class="external">↗</span>}
+        {entry.data.defunct && <span class="defunct">（閉鎖）</span>}
+        <span class="date">{entry.data.date.toLocaleDateString('ja-JP')}</span>
+      </li>
+    ))}
+  </ul>
+
+  <p><a href="/writing/">← Writing に戻る</a></p>
+</BaseLayout>
+
+<style>
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .entries {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+  }
+
+  .entries li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .entries li a {
+    flex-shrink: 0;
+  }
+
+  .external {
+    font-size: 0.75rem;
+    opacity: 0.5;
+  }
+
+  .defunct {
+    font-size: 0.875rem;
+    opacity: 0.7;
+  }
+
+  .date {
+    font-size: 0.875rem;
+    opacity: 0.7;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+</style>
