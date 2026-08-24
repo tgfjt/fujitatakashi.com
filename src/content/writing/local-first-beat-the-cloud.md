@@ -1,7 +1,8 @@
 ---
-title: "クラウドより優れていなければ勝てない"
+title: "You have to beat the cloud, not just be right"
 date: 2026-08-24
 tags: [local-first, Webの発見]
+lang: en
 ---
 
 [Local-first software](https://www.inkandswitch.com/essay/local-first/)
@@ -14,15 +15,15 @@ We would like both the convenient cross-device access and real-time collaboratio
 
 </blockquote>
 
-- イデオロギー（正しさ）だけではユーザーは動かない
-- クラウドより優れていなければ勝てない
+- Ideology alone doesn't move users
+- You have to beat the cloud, not just be right
 
-Ink & Switch[^1] の「You own your data, in spite of the cloud」というエッセイに、そう書いてあって、自分が感じていることを言い表してくれているなと感じた。
+Ink & Switch's[^1] essay "You own your data, in spite of the cloud" put into words something I'd been feeling.
 
-商業インセンティブとの闘いの難しさ、非中央集権アクセス制御の難しさ。ユーザーが選ぶ動機。
+The difficulty of fighting commercial incentives. The difficulty of decentralized access control. What actually makes a user choose.
 
-それでも挑戦することに意味があると思う。
+Still, I think it's worth trying.
 
-自分なりにもやっていく。
+I'll do my part, in my own way.
 
-[^1]: 未来のコンピュータやソフトウェアのあり方を実験してる独立系の研究所。新しい仕組みを実際にプロトタイプして研究していて、Automerge や Keyhive を作っている。
+[^1]: An independent research lab experimenting with what future computers and software could look like. They prototype and study new systems in practice — they built Automerge and Keyhive.
